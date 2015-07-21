@@ -1,5 +1,5 @@
 # Ekşi Sözlük API
 
-npm install
-node server
+-npm install
+-node server
 
