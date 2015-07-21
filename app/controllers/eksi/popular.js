@@ -2,11 +2,6 @@ var request = require('request');
 var cheerio = require('cheerio');
 var url = 'https://eksisozluk.com/basliklar/gundem';
 
-
-exports.index = function (req, res) {
-  res.json({date: new Date()});
-};
-
 exports.popular = function (req, res, next) {
 	request(url, function (err, response, body) {
 		if (err) {

@@ -3,10 +3,6 @@ var cheerio = require('cheerio');
 var url = 'https://eksisozluk.com/basliklar/kanal/spor';
 
 
-exports.index = function (req, res) {
-  res.json({date: new Date()});
-};
-
 exports.spor = function (req, res, next) {
 	request(url, function (err, response, sporbody) {
 		if (err) {
