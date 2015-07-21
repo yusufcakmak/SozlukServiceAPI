@@ -22,8 +22,7 @@ module.exports = function (app) {
   var router = express.Router();
   router.route('/').get(main_controller.main.index);
   router.route('/eksi/popular').get(eksi_controllers.popular.popular);
-  router.route('/eksi/spor').get(eksi_controllers.spor.spor);
   router.route('/eksi/detail').get(eksi_controllers.detay.detail);
-  router.route('/eksi/category').get(eksi_controllers.category.category);
+  router.route('/eksi').get(eksi_controllers.category.category);
   app.use(router);
 };

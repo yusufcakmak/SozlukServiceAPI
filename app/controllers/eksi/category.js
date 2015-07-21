@@ -3,24 +3,28 @@ var cheerio = require('cheerio');
 var url = 'https://eksisozluk.com';
 
 exports.category = function (req, res, next) {
-	request(url, function (err, response, body) {
-		if (err) {
+     if(typeof req.query.category==='undefined'){return res.json({'status':false,'msg':'Hedef category parametresiyle gelmelidir.'})}
+    var istenenUrl="http://eksisozluk.com"+"/basliklar/kanal/"+req.query.category;
+
+
+  request(istenenUrl, function (err, response, body) {
+    if (err) {
       return next(err);
     }
     if (response.statusCode !== 200) {
       return next(new Error('Server Error'));
     }
-	  $ = cheerio.load(body);
+    $ = cheerio.load(body);
 
     var links = $('dropdown').remove();
-	  var links = $('nav#sub-navigation ul#quick-index-nav li')
-	  .map(function (i, e) {
+    var links = $('div#content.instapaper_body ul.topic-list li')
+    .map(function (i, e) {
 
         var tds = $(e).find('a');
         return {
           
-          categoryTitle: $(tds[0]).text(),
-          categoryUrl:   $(tds[0]).attr('href'),
+          entryTitle: $(tds[0]).text(),
+          entryUrl:   $(tds[0]).attr('href'),
         };
         })
       .get() // get basic JSONArray
@@ -36,5 +40,5 @@ exports.category = function (req, res, next) {
     }
 
       return res.json(links);
-	  });
+    });
 };
