@@ -60,8 +60,8 @@ exports.categorylist = function (req, res, next) {
         var tds = $(e).find('a');
         return {
           
-          entryTitle: $(tds[0]).text(),
-          entryUrl:   $(tds[0]).attr('href'),
+          categoryName: $(tds[0]).text(),
+          categoryUrl:   $(tds[0]).attr('href'),
         };
         })
       .get() // get basic JSONArray
