@@ -24,5 +24,6 @@ module.exports = function (app) {
   router.route('/eksi/popular').get(eksi_controllers.popular.popular);
   router.route('/eksi/detail').get(eksi_controllers.detay.detail);
   router.route('/eksi').get(eksi_controllers.category.category);
+  router.route('/eksi/categorylist').get(eksi_controllers.category.categorylist);
   app.use(router);
 };
