@@ -12,15 +12,16 @@ exports.popular = function (req, res, next) {
     }
 	  $ = cheerio.load(body);
 
-    var links = $('small').remove();
+ 
 	  var links = $('div#content.instapaper_body ul.topic-list li')
 	  .map(function (i, e) {
-
+        var entryCount = $(e).find('small');
         var tds = $(e).find('a');
         return {
           
           entryTitle: $(tds[0]).text(),
           entryUrl:   $(tds[0]).attr('href'),
+          entryCount: $(entryCount[0]).text(),
         };
         })
       .get() // get basic JSONArray
