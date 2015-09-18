@@ -22,6 +22,7 @@ exports.popular = function (req, res, next) {
           entryTitle: $(tds[0]).text(),
           entryUrl:   $(tds[0]).attr('href'),
           entryCount: $(entryCount[0]).text(),
+          source:'eksi',
         };
         })
       .get() // get basic JSONArray
