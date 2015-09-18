@@ -18,6 +18,16 @@ fs.readdirSync(eksi_controllersPath).forEach(function (file) {
       require(eksi_controllersPath + '/' + file);
   }
 });
+
+var uludag_controllers = {};
+var uludag_controllersPath = process.cwd() + '/app/controllers/uludag';
+fs.readdirSync(uludag_controllersPath).forEach(function (file) {
+  if (file.match(/\.js$/)) {
+    uludag_controllers[file.split('.')[0].toLowerCase()] =
+      require(uludag_controllersPath + '/' + file);
+  }
+});
+
 module.exports = function (app) {
   var router = express.Router();
   router.route('/').get(main_controller.main.index);
@@ -25,5 +35,8 @@ module.exports = function (app) {
   router.route('/eksi/detail').get(eksi_controllers.detail.detail);
   router.route('/eksi').get(eksi_controllers.category.category);
   router.route('/eksi/categorylist').get(eksi_controllers.category.categorylist);
+
+router.route('/uludag/popular').get(uludag_controllers.popular.popular);
+
   app.use(router);
 };

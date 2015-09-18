@@ -1,6 +1,6 @@
 var request = require('request');
 var cheerio = require('cheerio');
-var url = 'https://eksisozluk.com/basliklar/gundem';
+var url = 'http://www.uludagsozluk.com/gundem/';
 
 exports.popular = function (req, res, next) {
 	request(url, function (err, response, body) {
@@ -13,7 +13,7 @@ exports.popular = function (req, res, next) {
 	  $ = cheerio.load(body);
 
  
-	  var links = $('div#content.instapaper_body ul.topic-list li')
+	  var links = $('div#main-wrapper ul.index-list li')
 	  .map(function (i, e) {
         var entryCount = $(e).find('small');
         var tds = $(e).find('a');
@@ -22,7 +22,7 @@ exports.popular = function (req, res, next) {
           entryTitle: $(tds[0]).text(),
           entryUrl:   $(tds[0]).attr('href'),
           entryCount: $(entryCount[0]).text(),
-          source:'eksi',
+          source:'uludag',
         };
         })
       .get() // get basic JSONArray
