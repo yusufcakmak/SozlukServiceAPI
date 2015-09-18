@@ -23,7 +23,7 @@ exports.detail = function (req, res, next) {
     }
     $ = cheerio.load(body);
 
-    var links =  $("ol.entry-list")
+    var links =  $("ol.entry-list li")
     .map(function (i, e) {
       var tds = $(e).find('div.entry-p');
       var entryAuthor = $(e).find('span.entry-author a');
