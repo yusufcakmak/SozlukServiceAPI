@@ -37,6 +37,7 @@ module.exports = function (app) {
   router.route('/eksi/categorylist').get(eksi_controllers.category.categorylist);
 
 router.route('/uludag/popular').get(uludag_controllers.popular.popular);
+  router.route('/uludag/detail').get(uludag_controllers.detail.detail);
 
   app.use(router);
 };
