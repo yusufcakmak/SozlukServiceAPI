@@ -25,9 +25,9 @@ exports.detail = function (req, res, next) {
 
     var links =  $("ol.entry-list")
     .map(function (i, e) {
-      var tds = $(e).find('li');
-      var entryAuthor = $(e).find('footer div.info a.entry-author');
-      var entryUrl = $(e).find('footer div.info a');
+      var tds = $(e).find('div.entry-p');
+      var entryAuthor = $(e).find('span.entry-author a');
+      var entryUrl = $(e).find('div.entry-secenekleri span.entry-author a.entry_tarih');
       
         return {
 
