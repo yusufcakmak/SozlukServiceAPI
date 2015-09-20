@@ -39,5 +39,6 @@ module.exports = function (app) {
 router.route('/uludag/popular').get(uludag_controllers.popular.popular);
   router.route('/uludag/detail').get(uludag_controllers.detail.detail);
 
+
   app.use(router);
 };
